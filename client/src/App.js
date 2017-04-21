@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import fetch from 'isomorphic-fetch'
-const API_BASE = 'http://localhost:3000'
+// const API_BASE = 'http://localhost:3001'
 
-fetch(`${API_BASE}/books`).then((data) => {
-  console.log(data);
+fetch(`/books`).then((response) => {
+  console.log(response.json());
 });
 
 class App extends Component {

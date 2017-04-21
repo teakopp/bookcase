@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "es6-promise": "^4.1.0",
     "isomorphic-fetch": "^2.2.1",
