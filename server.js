@@ -1,15 +1,15 @@
-var express = require('express');
-var app = express();
-var MongoClient = require('mongodb').MongoClient
-var http = require('http');
-var path = require('path');
+const express = require('express');
+const app = express();
+const MongoClient = require('mongodb').MongoClient
+const http = require('http');
+const path = require('path');
 
 
 app.set('port', (process.env.PORT || 3001));
 // respond with "hello world" when a GET request is made to the homepage
 app.use('/', express.static(__dirname + '/User'));
 
-app.route('/book')
+app.route('/books')
 .get(function (req, res) {
   MongoClient.connect('mongodb://localhost:27017/library', function (err, db) {
     if (err) throw err
@@ -23,6 +23,6 @@ app.route('/book')
 
 })
 
-app.listen(3001, function(){
-  console.log(('Example app listening on port 3001!'));
+app.listen(app.get('port'), () => {
+  console.log(`Find the server at: http://localhost:${app.get('port')}/`); // eslint-disable-line no-console
 });
