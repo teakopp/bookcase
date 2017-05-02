@@ -4,6 +4,9 @@ const MongoClient = require('mongodb').MongoClient
 const http = require('http');
 const path = require('path');
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
 
 app.set('port', (process.env.PORT || 3001));
 // respond with "hello world" when a GET request is made to the homepage

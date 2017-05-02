@@ -1,27 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import fetch from 'isomorphic-fetch'
-// const API_BASE = 'http://localhost:3001'
 
-fetch(`/books`).then((response) => {
-  console.log(response.json());
-});
+
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      books: []
+    };
+  }
+
+  componentDidMount() {
+    const url = '/books'
+    fetch(url).then((response) => {
+      return response.json();
+    }).then((data) => {
+      console.log(data);
+      const books = data;
+      this.setState({books})
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <ul>
+          {this.state.books.map(book =>
+          <li key={book._id}><img src={`./client/public/img${book.title}`} /></li>
+        )}
+        </ul>
       </div>
     );
   }
 }
+
+
+
 
 export default App;
