@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
+import {  Grid, Row, Col } from 'react-bootstrap';
 
+// <li key={book._id}>{book.title}</li>
 
 
 class App extends Component {
@@ -26,11 +28,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <ul>
+        <Grid>
+          <Row className="show-grid">
           {this.state.books.map(book =>
-          <li key={book._id}><img src={`./client/public/img${book.title}`} /></li>
-        )}
-        </ul>
+          <Col xs={2} md={1}>
+            <img src={"/img/" + book.title + ".jpg"}></img>
+          </Col>
+          )}
+          </Row>
+        </Grid>
       </div>
     );
   }

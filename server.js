@@ -9,8 +9,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.set('port', (process.env.PORT || 3001));
-// respond with "hello world" when a GET request is made to the homepage
-app.use('/', express.static(__dirname + '/User'));
+
+
+app.use(express.static(__dirname + '/public'));
 
 app.route('/books')
 .get(function (req, res) {
@@ -23,7 +24,6 @@ app.route('/books')
       console.log('Get on port 3000');
     })
   })
-
 })
 
 app.listen(app.get('port'), () => {
