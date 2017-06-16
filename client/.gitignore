@@ -9,9 +9,6 @@
 # production
 /build
 
-# images
-/public/img
-!/public/img/.txt
 
 # misc
 .DS_Store
